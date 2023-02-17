@@ -6,7 +6,7 @@
 /*   By: ael-khel <ael-khel@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 04:53:12 by ael-khel          #+#    #+#             */
-/*   Updated: 2023/02/17 07:54:20 by ael-khel         ###   ########.fr       */
+/*   Updated: 2023/02/17 10:09:11 by ael-khel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,10 @@ void	ft_add_back(t_stack **head, t_stack *new)
 
 	tmp_head = ft_stack_last(*head);
 	if (*head)
+	{
+		new->next = NULL;
 		tmp_head->next = new;
+	}
 	else
 		*head = new;
 }
