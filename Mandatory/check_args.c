@@ -6,7 +6,7 @@
 /*   By: ael-khel <ael-khel@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 06:34:05 by ael-khel          #+#    #+#             */
-/*   Updated: 2023/02/17 07:53:54 by ael-khel         ###   ########.fr       */
+/*   Updated: 2023/02/17 07:58:09 by ael-khel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,6 @@ long	ft_atol(t_data *data, const char *s)
 
 	result = 0;
 	sign = 1;
-	if (!s)
-		ft_err(data, "Error");
 	if (*s == '+' || *s == '-')
 		if (*s++ == '-')
 			sign = -sign;
