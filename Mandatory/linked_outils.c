@@ -6,7 +6,7 @@
 /*   By: ael-khel <ael-khel@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 04:53:12 by ael-khel          #+#    #+#             */
-/*   Updated: 2023/02/17 10:09:11 by ael-khel         ###   ########.fr       */
+/*   Updated: 2023/02/17 12:05:14 by ael-khel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,4 +63,11 @@ void	ft_stack_clear(t_stack **head)
 		*head = (*head)->next;
 		free(freed);
 	}
+}
+
+int	ft_stacksize(t_stack *stack)
+{
+	if (!stack)
+		return (0);
+	return (ft_stacksize(stack->next) + 1);
 }

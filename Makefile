@@ -6,7 +6,7 @@ CFLAGS = -Wall -Wextra -Werror -MMD -fsanitize=address
 
 M_DIR = Mandatory
 
-SRCS = main.c linked_outils.c check_args.c
+SRCS = main.c linked_outils.c check_args.c rules_1.c rules_2.c
 
 OBJS = ${SRCS:%.c=$(M_DIR)/%.o}
 
