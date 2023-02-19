@@ -18,7 +18,7 @@ LIBFT = ./LibFT/libft.a
 all: $(NAME)
 
 $(NAME): $(LIBFT) $(OBJS)
-	$(CC) $(OBJS) $(LIBFT) -fsanitize=address -static-libsan -o $@
+	$(CC) $(OBJS) $(LIBFT) -fsanitize=address -static-libasan -o $@
 
 $(LIBFT):
 	$(MAKE) -C LibFT

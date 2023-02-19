@@ -6,7 +6,7 @@
 /*   By: ael-khel <ael-khel@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 22:56:01 by ael-khel          #+#    #+#             */
-/*   Updated: 2023/02/17 12:04:04 by ael-khel         ###   ########.fr       */
+/*   Updated: 2023/02/19 03:11:49 by ael-khel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ typedef struct s_data
 
 void	ft_check_args(t_data *data, int ac, char **av);
 long	ft_atol(t_data *data, const char *s);
-int		check_dup(t_data *data, t_stack *stack);
+void	check_dup(t_data *data);
 
 t_stack	*ft_new(t_data *data, int nbr);
 void	ft_add_front(t_stack **head, t_stack *new);
@@ -59,6 +59,6 @@ void	ft_rrb(t_data *data, int rule);
 void	ft_rrr(t_data *data);
 
 void	ft_err(t_data *data, char *str);
-void	ft_clear(char **ptr);
+void	ft_clear(char ***ptr);
 
 #endif

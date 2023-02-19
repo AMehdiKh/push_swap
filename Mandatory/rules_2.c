@@ -6,7 +6,7 @@
 /*   By: ael-khel <ael-khel@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 11:11:17 by ael-khel          #+#    #+#             */
-/*   Updated: 2023/02/18 21:41:43 by ael-khel         ###   ########.fr       */
+/*   Updated: 2023/02/19 03:13:04 by ael-khel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,5 +79,5 @@ void	ft_rrr(t_data *data)
 {
 	ft_rra(data, 0);
 	ft_rrb(data, 0);
-	ft_putendl_fd("rrb", 1);
+	ft_putendl_fd("rrr", 1);
 }

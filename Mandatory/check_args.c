@@ -6,7 +6,7 @@
 /*   By: ael-khel <ael-khel@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 06:34:05 by ael-khel          #+#    #+#             */
-/*   Updated: 2023/02/17 10:35:47 by ael-khel         ###   ########.fr       */
+/*   Updated: 2023/02/19 03:23:52 by ael-khel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,9 @@ void	ft_check_args(t_data *data, int ac, char **av)
 		j = -1;
 		while (data->str[++j])
 			ft_add_back(&data->a, ft_new(data, ft_atol(data, data->str[j])));
+		ft_clear(&data->str);
 	}
-	ft_clear(data->str);
-	if (check_dup(data, data->a))
-	{
-		ft_stack_clear(&data->a);
-		printf ("OK\n");
-		exit(EXIT_SUCCESS);
-	}
-	printf ("OK\n");
+	check_dup(data);
 }
 
 long	ft_atol(t_data *data, const char *s)
@@ -58,18 +52,20 @@ long	ft_atol(t_data *data, const char *s)
 	return (result);
 }
 
-int	check_dup(t_data *data, t_stack *stack)
+void	check_dup(t_data *data)
 {
-	int		sorted;
+	t_stack	*stack;
 	t_stack	*tmp;
+	int		sorted;
 
 	sorted = 1;
+	stack = data->a;
 	while (stack->next)
 	{
 		tmp = stack->next;
 		while (tmp)
 		{
-			if (stack->nbr > tmp->nbr)
+			if (stack->nbr > tmp->nbr && sorted)
 				sorted = 0;
 			if (stack->nbr == tmp->nbr)
 				ft_err(data, "Error");
@@ -77,27 +73,37 @@ int	check_dup(t_data *data, t_stack *stack)
 		}
 		stack = stack->next;
 	}
-	return (sorted);
+	if (sorted)
+	{
+		ft_putendl_fd("The numbers are already sorted", 1);
+		ft_stack_clear(&data->a);
+		exit(EXIT_SUCCESS);
+	}
 }
 
 void	ft_err(t_data *data, char *str)
 {
 	if (str)
 		ft_putendl_fd("Error", 2);
+	if (data->str)
+		ft_clear(&data->str);
 	ft_stack_clear(&data->a);
-	ft_clear(data->str);
 	exit(EXIT_FAILURE);
 }
 
-void	ft_clear(char **ptr)
+void	ft_clear(char ***ptr)
 {
 	int	i;
 
-	i = 0;
-	if (ptr)
-		while (ptr[i])
+	if (*ptr)
+	{
+		i = 0;
+		while (*(*ptr + i))
+		{
+			free(*(*ptr + i));
 			++i;
-	while (i--)
-		free(ptr[i]);
-	free(ptr);
+		}
+		free(*ptr);
+		*ptr = NULL;
+	}
 }

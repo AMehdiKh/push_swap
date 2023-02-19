@@ -6,7 +6,7 @@
 /*   By: ael-khel <ael-khel@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 22:55:24 by ael-khel          #+#    #+#             */
-/*   Updated: 2023/02/18 21:43:47 by ael-khel         ###   ########.fr       */
+/*   Updated: 2023/02/19 03:27:52 by ael-khel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,12 @@ int	main(int ac, char **av)
 	}
 	ft_rra(data, 1);
 	printf("----------------\n");
-	while(data->a)
+	tmp = data->a;
+	while(tmp)
 	{
-		printf("%d\n", data->a->nbr);
-		data->a = data->a->next;
+		printf("%d\n", tmp->nbr);
+		tmp = tmp->next;
 	}
+	ft_stack_clear(&data->a);
  	return (0);
 }
