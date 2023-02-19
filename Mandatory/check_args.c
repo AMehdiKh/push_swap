@@ -6,7 +6,7 @@
 /*   By: ael-khel <ael-khel@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 06:34:05 by ael-khel          #+#    #+#             */
-/*   Updated: 2023/02/19 03:23:52 by ael-khel         ###   ########.fr       */
+/*   Updated: 2023/02/19 03:36:39 by ael-khel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,9 +85,8 @@ void	ft_err(t_data *data, char *str)
 {
 	if (str)
 		ft_putendl_fd("Error", 2);
-	if (data->str)
-		ft_clear(&data->str);
 	ft_stack_clear(&data->a);
+	ft_clear(&data->str);
 	exit(EXIT_FAILURE);
 }
 
