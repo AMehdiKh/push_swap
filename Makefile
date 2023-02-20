@@ -2,11 +2,11 @@ NAME = push_swap
 
 CC = gcc
 
-CFLAGS = -Wall -Wextra -Werror -MMD -fsanitize=address
+CFLAGS = -Wall -Wextra -MMD -fsanitize=address
 
-M_DIR = Mandatory
+M_DIR = Man
 
-SRCS = main.c linked_outils.c check_args.c rules_1.c rules_2.c
+SRCS = main.c check_args.c rules_1.c rules_2.c
 
 OBJS = ${SRCS:%.c=$(M_DIR)/%.o}
 

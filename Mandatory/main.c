@@ -6,7 +6,7 @@
 /*   By: ael-khel <ael-khel@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 22:55:24 by ael-khel          #+#    #+#             */
-/*   Updated: 2023/02/20 18:06:26 by ael-khel         ###   ########.fr       */
+/*   Updated: 2023/02/20 21:36:57 by ael-khel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,42 +55,4 @@ void	ft_sort_3(t_data *data)
 	a = ft_stack_which(data->a, half);
 
 	if (ft_stack_which(data->a, half) <= half)
-}
-
-t_stack	*ft_stack_which(t_stack *stack, int pos)
-{
-	if (!stack)
-		return (NULL);
-	while (stack->next && pos--)
-		stack = stack->next;
-	return (stack);
-}
-
-void	sort_array(t_data *data)
-{
-	int	i;
-	int	j;
-	int	min_index;
-	int	*ptr;
-
-	ptr = malloc((a->size + 1) * sizeof(int));
-	if (!ptr)
-		ft_err(data, NULL, NULL);
-	i = 0;
-	while (i < a->size)
-		ptr[i] = a->stack[i];
-	i = -1;
-	while (++i < data->a_size)
-	{
-		min_index = i;
-		j = i;
-		while (++j < data->a_size)
-			if (ptr[j] < ptr[min_index])
-				min_index = j;
-		j = ptr[i];
-		ptr[i] = ptr[min_index];
-		ptr[min_index] = j;
-		ft_rank_list(data, ptr[i], i);
-	}
-	free(ptr);
 }

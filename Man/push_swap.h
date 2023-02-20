@@ -6,7 +6,7 @@
 /*   By: ael-khel <ael-khel@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 22:56:01 by ael-khel          #+#    #+#             */
-/*   Updated: 2023/02/20 19:03:38 by ael-khel         ###   ########.fr       */
+/*   Updated: 2023/02/20 21:33:43 by ael-khel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,33 +26,26 @@ typedef struct s_stack
 	int		size;
 }	t_stack;
 
+void	ft_check_args(t_stack *a, t_stack *b, int ac, char **av);
+long	ft_atol(t_stack *a, char **args, const char *s);
+void	ft_add_back(t_stack *a, int size, int value, char **args);
+void	check_dup(t_stack *a);
+void	ft_rank_stack(t_stack *a, t_stack *b);
+void	ft_rank(t_stack *a, int value, int rank);
 
-void	ft_check_args(t_data *data, int ac, char **av);
-long	ft_atol(t_data *data, const char *s);
-void	check_dup(t_data *data);
+void	ft_sa(t_stack *a, int rule);
+void	ft_sb(t_stack *b, int rule);
+void	ft_ss(t_stack *a, t_stack *b);
+void	ft_pa(t_stack *a, t_stack *b);
+void	ft_pb(t_stack *a, t_stack *b);
+void	ft_ra(t_stack *a, int rule);
+void	ft_rb(t_stack *b, int rule);
+void	ft_rr(t_stack *a, t_stack *b);
+void	ft_rra(t_stack *a, int rule);
+void	ft_rrb(t_stack *b, int rule);
+void	ft_rrr(t_stack *a, t_stack *b);
 
-t_stack	*ft_new(t_data *data, int value);
-void	ft_add_front(t_stack **head, t_stack *new);
-void	ft_add_back(t_stack **head, t_stack *new);
-t_stack	*ft_stack_last(t_stack *stack);
-void	ft_stack_clear(t_stack **head);
-int		ft_stacksize(t_stack *stack);
-
-void	ft_sa(t_data *data, int rule);
-void	ft_sb(t_data *data, int rule);
-void	ft_ss(t_data *data);
-void	ft_pa(t_data *data);
-void	ft_pb(t_data *data);
-void	ft_ra(t_data *data, int rule);
-void	ft_rb(t_data *data, int rule);
-void	ft_rr(t_data *data);
-void	ft_rra(t_data *data, int rule);
-void	ft_rrb(t_data *data, int rule);
-void	ft_rrr(t_data *data);
-
-void	ft_err(t_data *data, char *str);
-void	ft_clear(char ***ptr);
-void	ft_sort_2(t_data *data);
-t_stack	*ft_stack_which(t_stack *stack, int pos);
+void	ft_err(t_stack *a, char **args, char *str);
+void	ft_clear(char **ptr);
 
 #endif
