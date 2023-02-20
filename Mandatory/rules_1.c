@@ -6,7 +6,7 @@
 /*   By: ael-khel <ael-khel@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 08:25:50 by ael-khel          #+#    #+#             */
-/*   Updated: 2023/02/18 21:43:35 by ael-khel         ###   ########.fr       */
+/*   Updated: 2023/02/19 07:50:11 by ael-khel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ void	ft_pa(t_data *data)
 	tmp_b = data->b;
 	data->b = data->b->next;
 	ft_add_front(&data->a, tmp_b);
+	--data->b_size;
+	++data->a_size;
 	ft_putendl_fd("pa", 1);
 }
 
@@ -66,5 +68,7 @@ void	ft_pb(t_data *data)
 	tmp_a = data->a;
 	data->a = data->a->next;
 	ft_add_front(&data->b, tmp_a);
+	--data->a_size;
+	++data->b_size;
 	ft_putendl_fd("pb", 1);
 }

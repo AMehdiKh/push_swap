@@ -6,20 +6,20 @@
 /*   By: ael-khel <ael-khel@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 04:53:12 by ael-khel          #+#    #+#             */
-/*   Updated: 2023/02/17 12:05:14 by ael-khel         ###   ########.fr       */
+/*   Updated: 2023/02/19 07:14:24 by ael-khel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stack	*ft_new(t_data *data, int nbr)
+t_stack	*ft_new(t_data *data, int value)
 {
 	t_stack	*new;
 
 	new = malloc(sizeof(t_stack));
 	if (!new)
 		ft_err(data, NULL);
-	new->nbr = nbr;
+	new->value = value;
 	new->next = NULL;
 	return (new);
 }

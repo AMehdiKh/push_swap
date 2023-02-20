@@ -6,7 +6,7 @@
 /*   By: ael-khel <ael-khel@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 22:56:01 by ael-khel          #+#    #+#             */
-/*   Updated: 2023/02/19 03:11:49 by ael-khel         ###   ########.fr       */
+/*   Updated: 2023/02/19 13:41:09 by ael-khel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@
 
 typedef struct s_stack
 {
-	int				nbr;
+	int				value;
+	int				pos;
 	struct s_stack	*next;
 }	t_stack;
 
@@ -30,16 +31,16 @@ typedef struct s_data
 {
 	t_stack	*a;
 	t_stack	*b;
-	char	**str;
 	int		a_size;
 	int		b_size;
+	char	**str;
 }	t_data;
 
 void	ft_check_args(t_data *data, int ac, char **av);
 long	ft_atol(t_data *data, const char *s);
 void	check_dup(t_data *data);
 
-t_stack	*ft_new(t_data *data, int nbr);
+t_stack	*ft_new(t_data *data, int value);
 void	ft_add_front(t_stack **head, t_stack *new);
 void	ft_add_back(t_stack **head, t_stack *new);
 t_stack	*ft_stack_last(t_stack *stack);
@@ -60,5 +61,7 @@ void	ft_rrr(t_data *data);
 
 void	ft_err(t_data *data, char *str);
 void	ft_clear(char ***ptr);
+void	ft_sort_2(t_data *data);
+t_stack	*ft_stack_which(t_stack *stack, int pos);
 
 #endif

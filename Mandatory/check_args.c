@@ -6,7 +6,7 @@
 /*   By: ael-khel <ael-khel@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 06:34:05 by ael-khel          #+#    #+#             */
-/*   Updated: 2023/02/19 03:36:39 by ael-khel         ###   ########.fr       */
+/*   Updated: 2023/02/19 13:42:56 by ael-khel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	ft_check_args(t_data *data, int ac, char **av)
 		while (data->str[++j])
 			ft_add_back(&data->a, ft_new(data, ft_atol(data, data->str[j])));
 		ft_clear(&data->str);
+		data->a_size += j;
 	}
 	check_dup(data);
 }
@@ -57,7 +58,9 @@ void	check_dup(t_data *data)
 	t_stack	*stack;
 	t_stack	*tmp;
 	int		sorted;
+	int		pos;
 
+	pos = -1;
 	sorted = 1;
 	stack = data->a;
 	while (stack->next)
@@ -65,14 +68,16 @@ void	check_dup(t_data *data)
 		tmp = stack->next;
 		while (tmp)
 		{
-			if (stack->nbr > tmp->nbr && sorted)
+			if (stack->value > tmp->value && sorted)
 				sorted = 0;
-			if (stack->nbr == tmp->nbr)
+			if (stack->value == tmp->value)
 				ft_err(data, "Error");
 			tmp = tmp->next;
 		}
+		stack->pos = ++pos;
 		stack = stack->next;
 	}
+	stack->pos = ++pos;
 	if (sorted)
 	{
 		ft_putendl_fd("The numbers are already sorted", 1);
@@ -104,5 +109,30 @@ void	ft_clear(char ***ptr)
 		}
 		free(*ptr);
 		*ptr = NULL;
+	}
+}
+
+void	check_dup(t_data *data)
+{
+	t_stack	*stack;
+	t_stack	*tmp;
+	int		sorted;
+
+	pos = -1;
+	sorted = 1;
+	stack = data->a;
+	while (stack->next)
+	{
+		tmp = stack->next;
+		while (tmp)
+		{
+			if (stack->value < tmp->value && sorted)
+			sorted = 0;
+			if (stack->value == tmp->value)
+				ft_err(data, "Error");
+			tmp = tmp->next;
+		}
+		stack->pos = ++pos;
+		stack = stack->next;
 	}
 }
