@@ -6,7 +6,7 @@
 /*   By: ael-khel <ael-khel@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 04:53:12 by ael-khel          #+#    #+#             */
-/*   Updated: 2023/02/19 07:14:24 by ael-khel         ###   ########.fr       */
+/*   Updated: 2023/02/20 07:27:26 by ael-khel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ t_stack	*ft_new(t_data *data, int value)
 	if (!new)
 		ft_err(data, NULL);
 	new->value = value;
+	new->rank = 0;
 	new->next = NULL;
 	return (new);
 }

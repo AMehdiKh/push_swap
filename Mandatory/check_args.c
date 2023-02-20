@@ -6,7 +6,7 @@
 /*   By: ael-khel <ael-khel@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 06:34:05 by ael-khel          #+#    #+#             */
-/*   Updated: 2023/02/19 13:42:56 by ael-khel         ###   ########.fr       */
+/*   Updated: 2023/02/20 08:13:26 by ael-khel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,24 +115,59 @@ void	ft_clear(char ***ptr)
 void	check_dup(t_data *data)
 {
 	t_stack	*stack;
-	t_stack	*tmp;
-	int		sorted;
+	int		*ptr;
+	int		i;
 
-	pos = -1;
-	sorted = 1;
 	stack = data->a;
+	ptr = malloc(sizeof(int) * data->a_size);
+	if (!ptr)
+		ft_err(data, NULL);
+	i = 0;
+	while (i < data->a_size)
+	{
+		ptr[i++] = stack->value;
+		stack = stack->next;
+	}
+	sort_array(data, ptr)
+}
+
+void	sort_array(t_data *data, int *ptr)
+{
+	int	i;
+	int	j;
+	int	temp;
+	int	min_index;
+
+	i = 0;
+	while (i < data->a_size)
+	{
+		min_index = i;
+		j = i;
+		while (++j < data->a_size)
+			if (ptr[j] < ptr[min_index])
+				min_index = j;
+		if (min_index != i)
+		{
+			temp = ptr[i];
+			ptr[i] = ptr[min_index];
+			ptr[min_index] = temp;
+		}
+		ft_rank_list(data, ptr[i], i);
+		++i;
+	}
+}
+
+void	ft_rank_list(t_data *data, int value, int rank)
+{
+	t_stack	*stack;
+
+	stack = data->a;
+	if (!stack)
+		return (NULL);
 	while (stack->next)
 	{
-		tmp = stack->next;
-		while (tmp)
-		{
-			if (stack->value < tmp->value && sorted)
-			sorted = 0;
-			if (stack->value == tmp->value)
-				ft_err(data, "Error");
-			tmp = tmp->next;
-		}
-		stack->pos = ++pos;
+		if (stack->value == value)
+			stack->rank = rank;
 		stack = stack->next;
 	}
 }
