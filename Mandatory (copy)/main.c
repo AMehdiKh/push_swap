@@ -6,7 +6,7 @@
 /*   By: ael-khel <ael-khel@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 22:55:24 by ael-khel          #+#    #+#             */
-/*   Updated: 2023/02/20 18:06:26 by ael-khel         ###   ########.fr       */
+/*   Updated: 2023/02/20 19:05:09 by ael-khel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,16 @@
 
 int	main(int ac, char **av)
 {
-	t_data	data[1];
+	t_stack	a[1];
+	t_stack	b[1];
 	t_stack	*tmp;
 
 	if (ac < 2)
 		return (0);
-	ft_bzero(data, sizeof(t_data));
+	ft_bzero(a, sizeof(t_stack));
+	ft_bzero(b, sizeof(t_stack));
 	ft_check_args(data, ac, av);
-	if (stack->a_size )
+	if (stack->a_size == )
 		ft_sort_2(data);
 	tmp = data->a;
 	while(tmp)
@@ -64,33 +66,4 @@ t_stack	*ft_stack_which(t_stack *stack, int pos)
 	while (stack->next && pos--)
 		stack = stack->next;
 	return (stack);
-}
-
-void	sort_array(t_data *data)
-{
-	int	i;
-	int	j;
-	int	min_index;
-	int	*ptr;
-
-	ptr = malloc((a->size + 1) * sizeof(int));
-	if (!ptr)
-		ft_err(data, NULL, NULL);
-	i = 0;
-	while (i < a->size)
-		ptr[i] = a->stack[i];
-	i = -1;
-	while (++i < data->a_size)
-	{
-		min_index = i;
-		j = i;
-		while (++j < data->a_size)
-			if (ptr[j] < ptr[min_index])
-				min_index = j;
-		j = ptr[i];
-		ptr[i] = ptr[min_index];
-		ptr[min_index] = j;
-		ft_rank_list(data, ptr[i], i);
-	}
-	free(ptr);
 }
