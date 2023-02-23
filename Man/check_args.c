@@ -6,7 +6,7 @@
 /*   By: ael-khel <ael-khel@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 06:34:05 by ael-khel          #+#    #+#             */
-/*   Updated: 2023/02/20 23:55:10 by ael-khel         ###   ########.fr       */
+/*   Updated: 2023/02/21 19:52:51 by ael-khel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,10 @@ void	ft_check_args(t_stack *a, t_stack *b, int ac, char **av)
 		if (!args)
 			ft_err(a, args, NULL);
 		if (!*args)
-			ft_err(a, args, "Error1");
+			ft_err(a, args, "Error");
 		j = -1;
 		while (args[++j])
-		{
 			ft_add_back(a, a->size + j, ft_atol(a, args, args[j]), args);
-		}
 		ft_clear(args);
 		a->size += j;
 	}
@@ -58,7 +56,7 @@ long	ft_atol(t_stack *a, char **args, const char *s)
 			result = (result * 10) + (*s++ - 48);
 	result *= sign;
 	if (*s || result > INT_MAX || result < INT_MIN)
-		ft_err(a, args, "Error2");
+		ft_err(a, args, "Error");
 	return (result);
 }
 
@@ -70,7 +68,7 @@ void	check_dup(t_stack *a)
 
 	sorted = 1;
 	i = 0;
-	while (i < a->size)
+	while (i < a->size - 1)
 	{
 		j = i + 1;
 		while (j < a->size)
@@ -78,7 +76,7 @@ void	check_dup(t_stack *a)
 			if (a->stack[i] > a->stack[j] && sorted)
 				sorted = 0;
 			if (a->stack[i] == a->stack[j])
-				ft_err(a, NULL, "Error3");
+				ft_err(a, NULL, "Error");
 			++j;
 		}
 		++i;
@@ -135,7 +133,8 @@ void	ft_rank_stack(t_stack *a, t_stack *b)
 		b->stack[min] = j;
 		ft_rank(a, b->stack[i], i);
 	}
-	ft_bzero(b->stack, a->size * sizeof(int));
+	// ft_bzero(b->stack, a->size * sizeof(int));
+	free(b->stack);
 }
 
 void	ft_rank(t_stack *a, int value, int rank)

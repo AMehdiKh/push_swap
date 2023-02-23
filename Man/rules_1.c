@@ -6,7 +6,7 @@
 /*   By: ael-khel <ael-khel@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 08:25:50 by ael-khel          #+#    #+#             */
-/*   Updated: 2023/02/21 00:11:28 by ael-khel         ###   ########.fr       */
+/*   Updated: 2023/02/21 20:11:21 by ael-khel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,11 +61,11 @@ void	ft_pa(t_stack *a, t_stack *b)
 		i = 0;
 		while (++i < b->size)
 			b->stack[i - 1] = b->stack[i];
-		i = a->size;
-		while (--i >= 2)
+		--b->size;
+		i = a->size + 1 + (a->size == 0);
+		while (--i)
 			a->stack[i] = a->stack[i - 1];
 		a->stack[0] = temp;
-		--b->size;
 		++a->size;
 		ft_putendl_fd("pa", 1);
 	}
@@ -82,11 +82,11 @@ void	ft_pb(t_stack *a, t_stack *b)
 		i = 0;
 		while (++i < a->size)
 			a->stack[i - 1] = a->stack[i];
-		i = b->size;
-		while (--i >= 2)
+		--a->size;
+		i = b->size + 1 + (b->size == 0);
+		while (--i)
 			b->stack[i] = b->stack[i - 1];
 		b->stack[0] = temp;
-		--a->size;
 		++b->size;
 		ft_putendl_fd("pb", 1);
 	}
