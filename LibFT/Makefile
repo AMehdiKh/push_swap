@@ -25,15 +25,15 @@ BOBJS = ${BSRCS:.c=.o}
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(AR) rcs $@ $?
+	@$(AR) rcs $@ $?
 
 bonus: $(OBJS) $(BOBJS)
-	$(AR) rcs $(NAME) $?
+	@$(AR) rcs $(NAME) $?
 
 clean:
-	rm -f $(OBJS) $(BOBJS)
+	@rm -f $(OBJS) $(BOBJS)
 
 fclean: clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
 
 re: fclean all

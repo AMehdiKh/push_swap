@@ -6,7 +6,7 @@
 /*   By: ael-khel <ael-khel@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 22:55:24 by ael-khel          #+#    #+#             */
-/*   Updated: 2023/02/23 16:47:51 by ael-khel         ###   ########.fr       */
+/*   Updated: 2023/02/23 20:13:23 by ael-khel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	main(int ac, char **av)
 	t_stack	a[1];
 	t_stack	b[1];
 
-	if (ac < 2)
+	if (ac < 5)
 		return (0);
 	ft_bzero(a, sizeof(t_stack));
 	ft_bzero(b, sizeof(t_stack));
@@ -25,12 +25,12 @@ int	main(int ac, char **av)
 	b->stack = malloc(a->size * sizeof(int));
 	if (!b->stack)
 		ft_err(a, NULL, NULL);
-	if (a->size <= 5)
-	{
-		ft_sort_eq_less_5(a, b);
-	}
-	else
-		ft_sort(a, b);
+	// if (a->size <= 5)
+	// {
+	// 	ft_sort_eq_less_5(a, b);
+	// }
+	// else
+	ft_sort(a, b);
 	free(b->stack);
 	free(a->stack);
 	return (0);
@@ -55,11 +55,17 @@ void	ft_sort(t_stack *a, t_stack *b)
 	int	range;
 	int	i;
 
-	range = 15;
+	range = 2;
 	i = 0;
 	while (a->size)
 	{
-		if (a->stack[0] < range + i)
+		if (a->stack[0] < i)
+		{
+			ft_pb(a, b);
+			ft_rb(b, 1);
+			++i;
+		}
+		else if (a->stack[0] < range + i)
 		{
 			ft_pb(a, b);
 			++i;
@@ -69,7 +75,7 @@ void	ft_sort(t_stack *a, t_stack *b)
 	}
 	while (b->size)
 	{
-		if (ft_index(b, b->size - 1) < b->size / 2)
+		if (ft_index(b, b->size - 1) < b->size / 4)
 			while (ft_index(b, b->size - 1) != 0)
 				ft_rb(b, 1);
 		else
@@ -78,7 +84,6 @@ void	ft_sort(t_stack *a, t_stack *b)
 		ft_pa(a, b);
 	}
 }
-
 
 // void	ft_khra(t_stack *a)
 // {

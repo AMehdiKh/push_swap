@@ -18,18 +18,18 @@ LIBFT = ./LibFT/libft.a
 all: $(NAME)
 
 $(NAME): $(LIBFT) $(OBJS)
-	$(CC) $(OBJS) $(LIBFT) -fsanitize=address -static-libsan -o $@
+	@$(CC) $(OBJS) $(LIBFT) -fsanitize=address -static-libasan -o $@
 
 $(LIBFT):
-	$(MAKE) -C LibFT
+	@$(MAKE) -C LibFT
 
 sinclude $(M_DEP)
 clean:
-	$(MAKE) fclean -C LibFT
-	$(RM) $(OBJS)
+	@$(MAKE) fclean -C LibFT
+	@$(RM) $(OBJS)
 	@$(RM) $(M_DEP)
 
 fclean: clean
-	$(RM) $(NAME)
+	@$(RM) $(NAME)
 
 re: fclean all
