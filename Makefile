@@ -6,7 +6,7 @@ CFLAGS = -Wall -Wextra -MMD -fsanitize=address
 
 M_DIR = Man
 
-SRCS = main.c check_args.c rules_1.c rules_2.c
+SRCS = main.c check_args.c rules_1.c rules_2.c utils.c
 
 OBJS = ${SRCS:%.c=$(M_DIR)/%.o}
 

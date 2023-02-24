@@ -6,13 +6,13 @@
 /*   By: ael-khel <ael-khel@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 06:34:05 by ael-khel          #+#    #+#             */
-/*   Updated: 2023/02/21 19:52:51 by ael-khel         ###   ########.fr       */
+/*   Updated: 2023/02/24 07:52:46 by ael-khel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_check_args(t_stack *a, t_stack *b, int ac, char **av)
+void	ft_check_args(t_stack *a, int ac, char **av)
 {
 	char	**args;
 	int		i;
@@ -38,7 +38,20 @@ void	ft_check_args(t_stack *a, t_stack *b, int ac, char **av)
 		exit(EXIT_SUCCESS);
 	}
 	check_dup(a);
-	ft_rank_stack(a, b);
+	ft_rank_stack(a);
+}
+
+void	ft_add_back(t_stack *a, int size, int value, char **args)
+{
+	int	*arr;
+
+	arr = ft_calloc(size + 1, sizeof(int));
+	if (!arr)
+		ft_err(a, args, NULL);
+	arr = ft_memcpy(arr, a->stack, size * sizeof(int));
+	arr[size] = value;
+	free(a->stack);
+	a->stack = arr;
 }
 
 long	ft_atol(t_stack *a, char **args, const char *s)
@@ -88,77 +101,29 @@ void	check_dup(t_stack *a)
 	}
 }
 
-void	ft_err(t_stack *a, char **args, char *str)
-{
-	if (str)
-		ft_putendl_fd(str, 2);
-	ft_clear(args);
-	free(a->stack);
-	exit(EXIT_FAILURE);
-}
-
-void	ft_clear(char **ptr)
-{
-	int	i;
-
-	if (ptr)
-	{
-		i = 0;
-		while (ptr[i])
-			free(ptr[i++]);
-		free(ptr);
-	}
-}
-
-void	ft_rank_stack(t_stack *a, t_stack *b)
+void	ft_rank_stack(t_stack *a)
 {
 	int	i;
 	int	j;
 	int	min;
+	int	*ptr;
 
-	b->stack = malloc(a->size * sizeof(int));
-	if (!b->stack)
+	ptr = malloc(a->size * sizeof(int));
+	if (!ptr)
 		ft_err(a, NULL, NULL);
-	b->stack = ft_memcpy(b->stack, a->stack, a->size * sizeof(int));
+	ptr = ft_memcpy(ptr, a->stack, a->size * sizeof(int));
 	i = -1;
 	while (++i < a->size)
 	{
 		min = i;
 		j = i;
 		while (++j < a->size)
-			if (b->stack[min] > b->stack[j])
+			if (ptr[min] > ptr[j])
 				min = j;
-		j = b->stack[i];
-		b->stack[i] = b->stack[min];
-		b->stack[min] = j;
-		ft_rank(a, b->stack[i], i);
+		j = ptr[i];
+		ptr[i] = ptr[min];
+		ptr[min] = j;
+		ft_rank(a, ptr[i], i);
 	}
-	// ft_bzero(b->stack, a->size * sizeof(int));
-	free(b->stack);
-}
-
-void	ft_rank(t_stack *a, int value, int rank)
-{
-	int	i;
-
-	i = 0;
-	while (i < a->size)
-	{
-		if (a->stack[i] == value)
-			a->stack[i] = rank;
-		++i;
-	}
-}
-
-void	ft_add_back(t_stack *a, int size, int value, char **args)
-{
-	int	*arr;
-
-	arr = ft_calloc(size + 1, sizeof(int));
-	if (!arr)
-		ft_err(a, args, NULL);
-	arr = ft_memcpy(arr, a->stack, size * sizeof(int));
-	arr[size] = value;
-	free(a->stack);
-	a->stack = arr;
+	free(ptr);
 }
