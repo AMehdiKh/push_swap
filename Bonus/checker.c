@@ -6,7 +6,7 @@
 /*   By: ael-khel <ael-khel@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 17:34:39 by ael-khel          #+#    #+#             */
-/*   Updated: 2023/02/25 09:19:07 by ael-khel         ###   ########.fr       */
+/*   Updated: 2023/02/25 18:17:47 by ael-khel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,8 @@ int	main(int ac, char **av)
 	ft_bzero(a, sizeof(t_stack));
 	ft_check_args(a, ac, av);
 	ft_check_dup(a, 0);
-	b->size = 0;
 	b->stack = ft_rank_stack(a);
-	ft_bzero(b->stack, a->size * sizeof(int));
+	b->size = 0;
 	ft_read(a, b);
 	free(a->stack);
 	free(b->stack);
@@ -41,7 +40,7 @@ void	ft_read(t_stack *a, t_stack *b)
 		if (ft_check_rules(a, b, str) == -1)
 		{
 			ft_putendl_fd("Error", 2);
-			free (str);
+			free(str);
 			free(a->stack);
 			free(b->stack);
 			exit(EXIT_FAILURE);
@@ -76,7 +75,7 @@ int	ft_check_rules(t_stack *a, t_stack *b, char *str)
 	else if (!ft_strncmp("rra\n", str, 4))
 		ft_rra(a, 0);
 	else if (!ft_strncmp("rrb\n", str, 4))
-		ft_rrb(a, 0);
+		ft_rrb(b, 0);
 	else if (!ft_strncmp("rrr\n", str, 4))
 		ft_rrr(a, b, 0);
 	else

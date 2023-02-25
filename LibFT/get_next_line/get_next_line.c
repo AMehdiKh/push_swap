@@ -6,7 +6,7 @@
 /*   By: ael-khel <ael-khel@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 11:30:22 by ael-khel          #+#    #+#             */
-/*   Updated: 2023/02/25 06:45:26 by ael-khel         ###   ########.fr       */
+/*   Updated: 2023/02/25 13:55:36 by ael-khel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ char	*ft_check_nl(char **reserve)
 	if (!line)
 		return (ft_free(reserve));
 	ft_strlcpy_gnl(line, *reserve, (i + 2));
-	len = ft_strlen(*reserve + i + 1);
+	len = ft_strlen_gnl(*reserve + i + 1);
 	if (!len)
 		ft_free(reserve);
 	else
@@ -45,12 +45,12 @@ char	*ft_strjoin_gnl(char **reserve, char *buffer)
 {
 	char	*tmp;
 
-	tmp = malloc(ft_strlen(*reserve) + ft_strlen(buffer) + 1);
+	tmp = malloc(ft_strlen_gnl(*reserve) + ft_strlen_gnl(buffer) + 1);
 	if (!tmp)
 		return (ft_free(reserve));
-	ft_strlcpy_gnl(tmp, *reserve, ft_strlen(*reserve) + 1);
-	ft_strlcpy_gnl((tmp + ft_strlen(tmp)),
-		buffer, ft_strlen(buffer) + 1);
+	ft_strlcpy_gnl(tmp, *reserve, ft_strlen_gnl(*reserve) + 1);
+	ft_strlcpy_gnl((tmp + ft_strlen_gnl(tmp)),
+		buffer, ft_strlen_gnl(buffer) + 1);
 	ft_free(reserve);
 	return (tmp);
 }
@@ -61,10 +61,10 @@ char	*ft_strdup_gnl(char **reserve)
 
 	if (!**reserve)
 		return (ft_free(reserve));
-	dup = malloc(ft_strlen(*reserve) + 1);
+	dup = malloc(ft_strlen_gnl(*reserve) + 1);
 	if (!dup)
 		return (ft_free(reserve));
-	ft_strlcpy_gnl(dup, *reserve, ft_strlen(*reserve) + 1);
+	ft_strlcpy_gnl(dup, *reserve, ft_strlen_gnl(*reserve) + 1);
 	ft_free(reserve);
 	return (dup);
 }

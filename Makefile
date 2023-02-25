@@ -4,7 +4,7 @@ B_NAME = checker
 ##################################################################################
 CC = gcc
 
-CFLAGS = -Wall -Wextra -MMD -fsanitize=address
+CFLAGS = -Wall -Wextra -MMD
 ##################################################################################
 M_DIR = Mandatory
 
@@ -36,12 +36,12 @@ LIBFT = ./LibFT/libft.a
 all: $(NAME)
 
 $(NAME): $(LIBFT) $(OBJS) $(SOBJS)
-	@$(CC) $(OBJS) $(SOBJS) $(LIBFT) -fsanitize=address -static-libsan -o $@
+	@$(CC) $(OBJS) $(SOBJS) $(LIBFT) -o $@
 
 bonus: $(B_NAME)
 
 $(B_NAME): $(LIBFT) $(BOBJS) $(SOBJS)
-	@$(CC) $(BOBJS) $(SOBJS) $(LIBFT) -fsanitize=address -static-libsan -o $@
+	@$(CC) $(BOBJS) $(SOBJS) $(LIBFT) -o $@
 
 $(LIBFT):
 	@$(MAKE) -C LibFT

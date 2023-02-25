@@ -6,7 +6,7 @@
 /*   By: ael-khel <ael-khel@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 11:29:42 by ael-khel          #+#    #+#             */
-/*   Updated: 2023/02/25 06:45:26 by ael-khel         ###   ########.fr       */
+/*   Updated: 2023/02/25 13:55:36 by ael-khel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	ft_strlcpy_gnl(char *dst, const char *src, size_t size);
 
 void	*ft_free(char **ptr1);
 
-size_t	ft_strlen(const char *s);
+size_t	ft_strlen_gnl(const char *s);
 
 int		ft_strchr_gnl(char *s, int c);
 

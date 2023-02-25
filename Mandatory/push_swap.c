@@ -6,7 +6,7 @@
 /*   By: ael-khel <ael-khel@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 22:55:24 by ael-khel          #+#    #+#             */
-/*   Updated: 2023/02/25 10:24:31 by ael-khel         ###   ########.fr       */
+/*   Updated: 2023/02/25 19:34:40 by ael-khel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	main(int ac, char **av)
 	t_stack	a[1];
 	t_stack	b[1];
 
-	if (ac < 1)
+	if (ac == 1) //lahw3lm 7ta tfi9
 		return (0);
 	ft_bzero(a, sizeof(t_stack));
 	ft_check_args(a, ac, av);
@@ -27,9 +27,8 @@ int	main(int ac, char **av)
 		exit(EXIT_SUCCESS);
 	}
 	ft_check_dup(a, 1);
-	b->size = 0;
 	b->stack = ft_rank_stack(a);
-	ft_bzero(b->stack, a->size * sizeof(int));
+	b->size = 0;
 	if (a->size <= 5)
 		ft_sort_eq_less_5(a, b);
 	else if (a->size <= 100)
@@ -57,7 +56,6 @@ void	ft_sort_eq_less_5(t_stack *a, t_stack *b)
 		ft_pb(a, b, 1);
 		++i;
 	}
-	printf("%d | %d", a->size, b->size);
 	if (ft_index(a, (a->size - 1) + b->size) == 1)
 		ft_rra(a, 1);
 	if (ft_index(a, (a->size - 1) + b->size) == 0)
@@ -68,21 +66,6 @@ void	ft_sort_eq_less_5(t_stack *a, t_stack *b)
 		ft_sb(b, 1);
 	while (b->size)
 		ft_pa(a, b, 1);
-}
-
-void	ft_range_sort(t_stack *a, t_stack *b, int range)
-{
-	ft_push_to_b(a, b, range);
-	while (b->size)
-	{
-		if (ft_index(b, b->size - 1) <= b->size / 2)
-			while (ft_index(b, b->size - 1) != 0)
-				ft_rb(b, 1);
-		else
-			while (ft_index(b, b->size - 1) != 0)
-				ft_rrb(b, 1);
-		ft_pa(a, b, 1);
-	}
 }
 
 void	ft_push_to_b(t_stack *a, t_stack *b, int range)
@@ -110,6 +93,20 @@ void	ft_push_to_b(t_stack *a, t_stack *b, int range)
 	}
 }
 
+void	ft_range_sort(t_stack *a, t_stack *b, int range)
+{
+	ft_push_to_b(a, b, range);
+	while (b->size)
+	{
+		if (ft_index(b, b->size - 1) <= b->size / 2)
+			while (ft_index(b, b->size - 1) != 0)
+				ft_rb(b, 1);
+		else
+			while (ft_index(b, b->size - 1) != 0)
+				ft_rrb(b, 1);
+		ft_pa(a, b, 1);
+	}
+}
 
 // void	ft_sort_3(t_stack *a)
 // {

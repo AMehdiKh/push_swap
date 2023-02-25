@@ -6,7 +6,7 @@
 /*   By: ael-khel <ael-khel@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 06:34:05 by ael-khel          #+#    #+#             */
-/*   Updated: 2023/02/25 09:55:18 by ael-khel         ###   ########.fr       */
+/*   Updated: 2023/02/25 18:16:16 by ael-khel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ long	ft_atol(t_stack *a, char **args, const char *s)
 
 	result = 0;
 	sign = 1;
-	if (*s == '+' || *s == '-')
+	if ((*s == '+' || *s == '-') && ft_strlen(s) != 1)
 		if (*s++ == '-')
 			sign = -sign;
 	if (ft_isdigit(*s))
@@ -116,7 +116,8 @@ int	*ft_rank_stack(t_stack *a)
 		j = ptr[i];
 		ptr[i] = ptr[min];
 		ptr[min] = j;
-		ft_rank(a, ptr[i], i);
 	}
+	ft_rank(a, ptr);
+	ft_bzero(ptr, a->size * sizeof(int));
 	return (ptr);
 }

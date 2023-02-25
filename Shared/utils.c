@@ -6,21 +6,25 @@
 /*   By: ael-khel <ael-khel@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 07:50:44 by ael-khel          #+#    #+#             */
-/*   Updated: 2023/02/25 06:28:47 by ael-khel         ###   ########.fr       */
+/*   Updated: 2023/02/25 18:13:49 by ael-khel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-void	ft_rank(t_stack *a, int value, int rank)
+void	ft_rank(t_stack *a, int *ptr)
 {
 	int	i;
+	int	j;
 
 	i = 0;
 	while (i < a->size)
 	{
-		if (a->stack[i] == value)
-			a->stack[i] = rank;
+		j = 0;
+		while (a->stack[i] != ptr[j] && j < a->size)
+			++j;
+		if (a->stack[i] == ptr[j])
+			a->stack[i] = j;
 		++i;
 	}
 }
