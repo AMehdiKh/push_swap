@@ -6,7 +6,7 @@
 /*   By: ael-khel <ael-khel@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 17:34:39 by ael-khel          #+#    #+#             */
-/*   Updated: 2023/02/25 06:29:23 by ael-khel         ###   ########.fr       */
+/*   Updated: 2023/02/25 07:22:42 by ael-khel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,23 +25,22 @@ int	main(int ac, char **av)
 	b->stack = malloc(a->size * sizeof(int));
 	if (!b->stack)
 		ft_err(a, NULL, NULL);
-	ft_read();
+	ft_read(a, b);
 	free(a->stack);
 	free(b->stack);
 	return (0);
 }
 
-void	ft_read(void)
+void	ft_read(t_stack *a, t_stack *b)
 {
 	char	*str;
-	int		i;
 
 	str = get_next_line(0);
 	while (str)
 	{
-		if (ft_check_rules(str) == -1)
+		if (ft_check_rules(a, b, str) == -1)
 		{
-			ft_putendl("Error", 2);
+			ft_putendl_fd("Error", 2);
 			free (str);
 			free(a->stack);
 			free(b->stack);
@@ -58,27 +57,27 @@ void	ft_read(void)
 
 int	ft_check_rules(t_stack *a, t_stack *b, char *str)
 {
-	if (!ft_strncmp("sa\n", str, 3)
+	if (!ft_strncmp("sa\n", str, 3))
 		ft_sa(a, 0);
-	else if (!ft_strncmp("sb\n", str, 3)
+	else if (!ft_strncmp("sb\n", str, 3))
 		ft_sb(b, 0);
-	else if (!ft_strncmp("ss\n", str, 3)
+	else if (!ft_strncmp("ss\n", str, 3))
 		ft_ss(a, b, 0);
-	else if (!ft_strncmp("ra\n", str, 3)
+	else if (!ft_strncmp("ra\n", str, 3))
 		ft_ra(a, 0);
-	else if (!ft_strncmp("rb\n", str, 3)
+	else if (!ft_strncmp("rb\n", str, 3))
 		ft_rb(b, 0);
-	else if (!ft_strncmp("rr\n", str, 3)
+	else if (!ft_strncmp("rr\n", str, 3))
 		ft_rr(a, b, 0);
-	else if (!ft_strncmp("pa\n", str, 3)
+	else if (!ft_strncmp("pa\n", str, 3))
 		ft_pa(a, b, 0);
-	else if (!ft_strncmp("pb\n", str, 3)
+	else if (!ft_strncmp("pb\n", str, 3))
 		ft_pb(a, b, 0);
-	else if (!ft_strncmp("rra\n", str, 4)
+	else if (!ft_strncmp("rra\n", str, 4))
 		ft_rra(a, 0);
-	else if (!ft_strncmp("rrb\n", str, 4)
+	else if (!ft_strncmp("rrb\n", str, 4))
 		ft_rrb(a, 0);
-	else if (!ft_strncmp("rrr\n", str, 4)
+	else if (!ft_strncmp("rrr\n", str, 4))
 		ft_rrr(a, b, 0);
 	else
 		return (-1);

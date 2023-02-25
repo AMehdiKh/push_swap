@@ -6,7 +6,7 @@
 /*   By: ael-khel <ael-khel@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 11:30:19 by ael-khel          #+#    #+#             */
-/*   Updated: 2022/11/12 02:32:35 by ael-khel         ###   ########.fr       */
+/*   Updated: 2023/02/25 06:44:56 by ael-khel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ size_t	ft_strlen(const char *s)
 	return (i);
 }
 
-void	ft_strlcpy(char *dst, const char *src, size_t size)
+void	ft_strlcpy_gnl(char *dst, const char *src, size_t size)
 {
 	if (size)
 	{
@@ -34,7 +34,7 @@ void	ft_strlcpy(char *dst, const char *src, size_t size)
 	}
 }
 
-int	ft_strchr(char *s, int c)
+int	ft_strchr_gnl(char *s, int c)
 {
 	if (!s)
 		return (0);

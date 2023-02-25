@@ -6,7 +6,7 @@
 /*   By: ael-khel <ael-khel@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 22:56:01 by ael-khel          #+#    #+#             */
-/*   Updated: 2023/02/25 02:24:39 by ael-khel         ###   ########.fr       */
+/*   Updated: 2023/02/25 07:13:42 by ael-khel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,8 @@ void	ft_push_to_b(t_stack *a, t_stack *b, int range);
 
 void	ft_sort_eq_less_5(t_stack *a, t_stack *b);
 
-void	ft_read(void);
+void	ft_read(t_stack *a, t_stack *b);
 int		ft_sorted(t_stack *ptr);
-void	ft_check_rules(t_stack *a, t_stack *b, char *str);
+int	ft_check_rules(t_stack *a, t_stack *b, char *str);
 
 #endif

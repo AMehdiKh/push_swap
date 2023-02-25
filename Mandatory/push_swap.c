@@ -6,7 +6,7 @@
 /*   By: ael-khel <ael-khel@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 22:55:24 by ael-khel          #+#    #+#             */
-/*   Updated: 2023/02/25 06:28:18 by ael-khel         ###   ########.fr       */
+/*   Updated: 2023/02/25 07:06:46 by ael-khel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,17 +101,6 @@ void	ft_push_to_b(t_stack *a, t_stack *b, int range)
 			ft_ra(a, 1);
 	}
 }
-
-// int	ft_sorted(t_stack *ptr)
-// {
-// 	int	i;
-
-// 	i = 0;
-// 	while (++i < ptr->size)
-// 		if (ptr->stack[i - 1] > ptr->stack[i])
-// 			return (0);
-// 	return (1);
-// }
 
 // void	ft_sort_3(t_stack *a)
 // {
