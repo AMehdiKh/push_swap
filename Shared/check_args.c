@@ -6,11 +6,11 @@
 /*   By: ael-khel <ael-khel@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 06:34:05 by ael-khel          #+#    #+#             */
-/*   Updated: 2023/02/24 16:08:01 by ael-khel         ###   ########.fr       */
+/*   Updated: 2023/02/25 06:28:34 by ael-khel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../include/push_swap.h"
 
 void	ft_check_args(t_stack *a, int ac, char **av)
 {

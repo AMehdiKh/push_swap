@@ -6,11 +6,11 @@
 /*   By: ael-khel <ael-khel@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 07:50:44 by ael-khel          #+#    #+#             */
-/*   Updated: 2023/02/25 00:38:47 by ael-khel         ###   ########.fr       */
+/*   Updated: 2023/02/25 06:28:47 by ael-khel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../include/push_swap.h"
 
 void	ft_rank(t_stack *a, int value, int rank)
 {
