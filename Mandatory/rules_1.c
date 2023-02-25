@@ -6,69 +6,91 @@
 /*   By: ael-khel <ael-khel@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 08:25:50 by ael-khel          #+#    #+#             */
-/*   Updated: 2023/02/19 07:50:11 by ael-khel         ###   ########.fr       */
+/*   Updated: 2023/02/25 00:57:35 by ael-khel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_sa(t_data *data, int rule)
+void	ft_sa(t_stack *a, int rule)
 {
-	t_stack	*tmp_a;
+	int	temp;
 
-	if (data->a_size < 2)
-		return ;
-	tmp_a = data->a->next;
-	data->a->next = data->a->next->next;
-	ft_add_front(&data->a, tmp_a);
-	if (rule)
-		ft_putendl_fd("sa", 1);
+	if (a->size > 1)
+	{
+		temp = a->stack[0];
+		a->stack[0] = a->stack[1];
+		a->stack[1] = temp;
+		if (rule)
+			ft_putendl_fd("sa", 1);
+	}
 }
 
-void	ft_sb(t_data *data, int rule)
+void	ft_sb(t_stack *b, int rule)
 {
-	t_stack	*tmp_b;
+	int	temp;
 
-	if (data->b_size < 2)
-		return ;
-	tmp_b = data->b->next;
-	data->b->next = data->b->next->next;
-	ft_add_front(&data->b, tmp_b);
-	if (rule)
-		ft_putendl_fd("sb", 1);
+	if (b->size > 1)
+	{
+		temp = b->stack[0];
+		b->stack[0] = b->stack[1];
+		b->stack[1] = temp;
+		if (rule)
+			ft_putendl_fd("sb", 1);
+	}
 }
 
-void	ft_ss(t_data *data)
+void	ft_ss(t_stack *a, t_stack *b, int rule)
 {
-	ft_sa(data, 0);
-	ft_sb(data, 0);
-	ft_putendl_fd("ss", 1);
+	if (a->size > 1 && b->size > 1)
+	{
+		ft_sa(a, 0);
+		ft_sb(b, 0);
+		if (rule)
+			ft_putendl_fd("ss", 1);
+	}
 }
 
-void	ft_pa(t_data *data)
+void	ft_pa(t_stack *a, t_stack *b, int rule)
 {
-	t_stack	*tmp_b;
+	int	temp;
+	int	i;
 
-	if (!data->b_size)
-		return ;
-	tmp_b = data->b;
-	data->b = data->b->next;
-	ft_add_front(&data->a, tmp_b);
-	--data->b_size;
-	++data->a_size;
-	ft_putendl_fd("pa", 1);
+	if (b->size)
+	{
+		temp = b->stack[0];
+		i = 0;
+		while (++i < b->size)
+			b->stack[i - 1] = b->stack[i];
+		--b->size;
+		i = a->size + 1 + (a->size == 0);
+		while (--i)
+			a->stack[i] = a->stack[i - 1];
+		a->stack[0] = temp;
+		++a->size;
+		if (rule)
+			ft_putendl_fd("pa", 1);
+	}
 }
 
-void	ft_pb(t_data *data)
+void	ft_pb(t_stack *a, t_stack *b, int rule)
 {
-	t_stack	*tmp_a;
+	int	temp;
+	int	i;
 
-	if (!data->a_size)
-		return ;
-	tmp_a = data->a;
-	data->a = data->a->next;
-	ft_add_front(&data->b, tmp_a);
-	--data->a_size;
-	++data->b_size;
-	ft_putendl_fd("pb", 1);
+	if (a->size)
+	{
+		temp = a->stack[0];
+		i = 0;
+		while (++i < a->size)
+			a->stack[i - 1] = a->stack[i];
+		--a->size;
+		i = b->size + 1 + (b->size == 0);
+		while (--i)
+			b->stack[i] = b->stack[i - 1];
+		b->stack[0] = temp;
+		++b->size;
+		if (rule)
+			ft_putendl_fd("pb", 1);
+	}
 }

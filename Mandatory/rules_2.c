@@ -6,78 +6,87 @@
 /*   By: ael-khel <ael-khel@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 11:11:17 by ael-khel          #+#    #+#             */
-/*   Updated: 2023/02/19 07:32:04 by ael-khel         ###   ########.fr       */
+/*   Updated: 2023/02/25 00:38:15 by ael-khel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_ra(t_data *data, int rule)
+void	ft_ra(t_stack *a, int rule)
 {
-	t_stack	*tmp_a;
+	int	temp;
+	int	i;
 
-	if (data->a_size < 3)
-		return ;
-	tmp_a = data->a;
-	data->a = data->a->next;
-	ft_add_back(&data->a, tmp_a);
-	if (rule)
-		ft_putendl_fd("ra", 1);
+	if (a->size > 1)
+	{
+		temp = a->stack[0];
+		i = 0;
+		while (++i < a->size)
+			a->stack[i - 1] = a->stack[i];
+		a->stack[a->size - 1] = temp;
+		if (rule)
+			ft_putendl_fd("ra", 1);
+	}
 }
 
-void	ft_rb(t_data *data, int rule)
+void	ft_rb(t_stack *b, int rule)
 {
-	t_stack	*tmp_b;
+	int	temp;
+	int	i;
 
-	if (data->b_size < 3)
-		return ;
-	tmp_b = data->b;
-	data->b = data->b->next;
-	ft_add_back(&data->b, tmp_b);
-	if (rule)
-		ft_putendl_fd("rb", 1);
+	if (b->size > 1)
+	{
+		temp = b->stack[0];
+		i = 0;
+		while (++i < b->size)
+			b->stack[i - 1] = b->stack[i];
+		b->stack[b->size - 1] = temp;
+		if (rule)
+			ft_putendl_fd("rb", 1);
+	}
 }
 
-void	ft_rr(t_data *data)
+void	ft_rr(t_stack *a, t_stack *b, int rule)
 {
-	ft_ra(data, 0);
-	ft_rb(data, 0);
-	ft_putendl_fd("rr", 1);
+	if (a->size > 1 && b->size > 1)
+	{
+		ft_ra(a, 0);
+		ft_rb(b, 0);
+		if (rule)
+			ft_putendl_fd("rr", 1);
+	}
 }
 
-void	ft_rra(t_data *data, int rule)
+void	ft_rra(t_stack *a, int rule)
 {
-	t_stack	*tmp_a;
+	int	temp;
+	int	i;
 
-	if (data->a_size < 3)
-		return ;
-	tmp_a = data->a;
-	while (tmp_a->next->next)
-		tmp_a = tmp_a->next;
-	ft_add_front(&data->a, tmp_a->next);
-	tmp_a->next = NULL;
-	if (rule)
-		ft_putendl_fd("rra", 1);
+	if (a->size > 1)
+	{
+		temp = a->stack[a->size - 1];
+		i = a->size;
+		while (--i)
+			a->stack[i] = a->stack[i - 1];
+		a->stack[0] = temp;
+		if (rule)
+			ft_putendl_fd("rra", 1);
+	}
 }
 
-void	ft_rrb(t_data *data, int rule)
+void	ft_rrb(t_stack *b, int rule)
 {
-	t_stack	*tmp_b;
+	int	temp;
+	int	i;
 
-	if (data->b_size < 3)
-		return ;
-	tmp_b = data->b;
-	while (tmp_b->next->next)
-		tmp_b = tmp_b->next;
-	ft_add_front(&data->b, tmp_b->next);
-	tmp_b->next = NULL;
-	if (rule)
-		ft_putendl_fd("rrb", 1);
-}
-
-void	ft_rrr(t_data *data)
-{
-	ft_rra(data, 0);
-	ft_rrb(data, 0);
-	ft_putendl_fd("rrr", 1);
+	if (b->size > 1)
+	{
+		temp = b->stack[b->size - 1];
+		i = b->size;
+		while (--i)
+			b->stack[i] = b->stack[i - 1];
+		b->stack[0] = temp;
+		if (rule)
+			ft_putendl_fd("rrb", 1);
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: ael-khel <ael-khel@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 22:56:01 by ael-khel          #+#    #+#             */
-/*   Updated: 2023/02/24 09:21:53 by ael-khel         ###   ########.fr       */
+/*   Updated: 2023/02/25 02:24:39 by ael-khel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,15 +35,15 @@ void	ft_rank(t_stack *a, int value, int rank);
 
 void	ft_sa(t_stack *a, int rule);
 void	ft_sb(t_stack *b, int rule);
-void	ft_ss(t_stack *a, t_stack *b);
-void	ft_pa(t_stack *a, t_stack *b);
-void	ft_pb(t_stack *a, t_stack *b);
+void	ft_ss(t_stack *a, t_stack *b, int rule);
+void	ft_pa(t_stack *a, t_stack *b, int rule);
+void	ft_pb(t_stack *a, t_stack *b, int rule);
 void	ft_ra(t_stack *a, int rule);
 void	ft_rb(t_stack *b, int rule);
-void	ft_rr(t_stack *a, t_stack *b);
+void	ft_rr(t_stack *a, t_stack *b, int rule);
 void	ft_rra(t_stack *a, int rule);
 void	ft_rrb(t_stack *b, int rule);
-void	ft_rrr(t_stack *a, t_stack *b);
+void	ft_rrr(t_stack *a, t_stack *b, int rule);
 
 void	ft_err(t_stack *a, char **args, char *str);
 void	ft_clear(char **ptr);
@@ -51,8 +51,12 @@ void	ft_clear(char **ptr);
 int		ft_index(t_stack *ptr, int rank);
 void	ft_range_sort(t_stack *a, t_stack *b, int range);
 void	ft_khra(t_stack *a);
-int		ft_sorted(t_stack *ptr);
+void	ft_push_to_b(t_stack *a, t_stack *b, int range);
 
 void	ft_sort_eq_less_5(t_stack *a, t_stack *b);
+
+void	ft_read(void);
+int		ft_sorted(t_stack *ptr);
+void	ft_check_rules(t_stack *a, t_stack *b, char *str);
 
 #endif

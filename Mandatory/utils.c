@@ -6,7 +6,7 @@
 /*   By: ael-khel <ael-khel@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 07:50:44 by ael-khel          #+#    #+#             */
-/*   Updated: 2023/02/24 07:58:57 by ael-khel         ###   ########.fr       */
+/*   Updated: 2023/02/25 00:38:47 by ael-khel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,5 +58,16 @@ void	ft_clear(char **ptr)
 		while (ptr[i])
 			free(ptr[i++]);
 		free(ptr);
+	}
+}
+
+void	ft_rrr(t_stack *a, t_stack *b, int rule)
+{
+	if (a->size > 1 && b->size > 1)
+	{
+		ft_rra(a, 0);
+		ft_rrb(b, 0);
+		if (rule)
+			ft_putendl_fd("rrr", 1);
 	}
 }

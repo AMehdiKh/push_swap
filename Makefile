@@ -4,7 +4,7 @@ CC = gcc
 
 CFLAGS = -Wall -Wextra -MMD -fsanitize=address
 
-M_DIR = Man
+M_DIR = Mandatory
 
 SRCS = main.c check_args.c rules_1.c rules_2.c utils.c
 
@@ -18,7 +18,7 @@ LIBFT = ./LibFT/libft.a
 all: $(NAME)
 
 $(NAME): $(LIBFT) $(OBJS)
-	@$(CC) $(OBJS) $(LIBFT) -fsanitize=address -static-libasan -o $@
+	@$(CC) $(OBJS) $(LIBFT) -fsanitize=address -static-libsan -o $@
 
 $(LIBFT):
 	@$(MAKE) -C LibFT
