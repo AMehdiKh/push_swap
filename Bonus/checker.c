@@ -6,7 +6,7 @@
 /*   By: ael-khel <ael-khel@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 17:34:39 by ael-khel          #+#    #+#             */
-/*   Updated: 2023/02/25 07:22:42 by ael-khel         ###   ########.fr       */
+/*   Updated: 2023/02/25 08:20:38 by ael-khel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int	main(int ac, char **av)
 		return (0);
 	ft_bzero(a, sizeof(t_stack));
 	ft_check_args(a, ac, av);
+	check_duplicate(a);
 	b->size = 0;
 	b->stack = malloc(a->size * sizeof(int));
 	if (!b->stack)
@@ -93,4 +94,27 @@ int	ft_sorted(t_stack *ptr)
 		if (ptr->stack[i - 1] > ptr->stack[i])
 			return (0);
 	return (1);
+}
+
+void	check_duplicate(t_stack *a)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < a->size - 1)
+	{
+		j = i + 1;
+		while (j < a->size)
+		{
+			if (a->stack[i] == a->stack[j])
+			{
+				ft_putendl_fd("Error", 2);
+				free(a->stack);
+				exit(EXIT_FAILURE);
+			}
+			++j;
+		}
+		++i;
+	}
 }

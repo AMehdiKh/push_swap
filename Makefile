@@ -36,12 +36,12 @@ LIBFT = ./LibFT/libft.a
 all: $(NAME)
 
 $(NAME): $(LIBFT) $(OBJS) $(SOBJS)
-	@$(CC) $(OBJS) $(SOBJS) $(LIBFT) -fsanitize=address -static-libsan -o $@
+	@$(CC) $(OBJS) $(SOBJS) $(LIBFT) -fsanitize=address -static-libasan -o $@
 
 bonus: $(B_NAME)
 
 $(B_NAME): $(LIBFT) $(BOBJS) $(SOBJS)
-	@$(CC) $(BOBJS) $(SOBJS) $(LIBFT) -fsanitize=address -static-libsan -o $@
+	@$(CC) $(BOBJS) $(SOBJS) $(LIBFT) -fsanitize=address -static-libasan -o $@
 
 $(LIBFT):
 	@$(MAKE) -C LibFT
