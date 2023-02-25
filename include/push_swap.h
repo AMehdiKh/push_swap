@@ -6,7 +6,7 @@
 /*   By: ael-khel <ael-khel@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 22:56:01 by ael-khel          #+#    #+#             */
-/*   Updated: 2023/02/25 08:22:09 by ael-khel         ###   ########.fr       */
+/*   Updated: 2023/02/25 09:54:48 by ael-khel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ typedef struct s_stack
 void	ft_check_args(t_stack *a, int ac, char **av);
 long	ft_atol(t_stack *a, char **args, const char *s);
 void	ft_add_back(t_stack *a, int size, int value, char **args);
-void	check_dup(t_stack *a);
-void	ft_rank_stack(t_stack *a);
+void	ft_check_dup(t_stack *a, int man);
+int		*ft_rank_stack(t_stack *a);
 void	ft_rank(t_stack *a, int value, int rank);
 
 void	ft_sa(t_stack *a, int rule);
@@ -48,15 +48,13 @@ void	ft_rrr(t_stack *a, t_stack *b, int rule);
 void	ft_err(t_stack *a, char **args, char *str);
 void	ft_clear(char **ptr);
 
-int		ft_index(t_stack *ptr, int rank);
+void	ft_sort_eq_less_5(t_stack *a, t_stack *b);
 void	ft_range_sort(t_stack *a, t_stack *b, int range);
 void	ft_push_to_b(t_stack *a, t_stack *b, int range);
-
-void	ft_sort_eq_less_5(t_stack *a, t_stack *b);
+int		ft_index(t_stack *ptr, int rank);
 
 void	ft_read(t_stack *a, t_stack *b);
-int		ft_sorted(t_stack *ptr);
 int		ft_check_rules(t_stack *a, t_stack *b, char *str);
-void	check_duplicate(t_stack *a);
+int		ft_sorted(t_stack *ptr);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: ael-khel <ael-khel@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 22:55:24 by ael-khel          #+#    #+#             */
-/*   Updated: 2023/02/25 08:36:09 by ael-khel         ###   ########.fr       */
+/*   Updated: 2023/02/25 10:24:31 by ael-khel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,10 @@ int	main(int ac, char **av)
 		free(a->stack);
 		exit(EXIT_SUCCESS);
 	}
-	check_dup(a);
-	ft_rank_stack(a);
+	ft_check_dup(a, 1);
 	b->size = 0;
-	b->stack = malloc(a->size * sizeof(int));
-	if (!b->stack)
-		ft_err(a, NULL, NULL);
+	b->stack = ft_rank_stack(a);
+	ft_bzero(b->stack, a->size * sizeof(int));
 	if (a->size <= 5)
 		ft_sort_eq_less_5(a, b);
 	else if (a->size <= 100)
@@ -48,7 +46,7 @@ void	ft_sort_eq_less_5(t_stack *a, t_stack *b)
 	int	i;
 
 	i = 0;
-	while (a->size != 3)
+	while (a->size > 3)
 	{
 		if (ft_index(a, i) <= a->size / 2)
 			while (ft_index(a, i) != 0)
@@ -59,10 +57,11 @@ void	ft_sort_eq_less_5(t_stack *a, t_stack *b)
 		ft_pb(a, b, 1);
 		++i;
 	}
-	if (ft_index(a, (a->size - 1) + b->size) == 0)
-		ft_ra(a, 1);
+	printf("%d | %d", a->size, b->size);
 	if (ft_index(a, (a->size - 1) + b->size) == 1)
 		ft_rra(a, 1);
+	if (ft_index(a, (a->size - 1) + b->size) == 0)
+		ft_ra(a, 1);
 	if (ft_index(a, b->size) == 1)
 		ft_sa(a, 1);
 	if (ft_index(b, 0) == 0)
@@ -110,6 +109,7 @@ void	ft_push_to_b(t_stack *a, t_stack *b, int range)
 			ft_ra(a, 1);
 	}
 }
+
 
 // void	ft_sort_3(t_stack *a)
 // {
