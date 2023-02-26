@@ -6,7 +6,7 @@
 /*   By: ael-khel <ael-khel@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 17:34:39 by ael-khel          #+#    #+#             */
-/*   Updated: 2023/02/25 18:17:47 by ael-khel         ###   ########.fr       */
+/*   Updated: 2023/02/26 21:53:00 by ael-khel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,26 +17,28 @@ int	main(int ac, char **av)
 	t_stack	a[1];
 	t_stack	b[1];
 
-	if (ac < 1)
+	if (ac == 1)
 		return (0);
 	ft_bzero(a, sizeof(t_stack));
 	ft_check_args(a, ac, av);
 	ft_check_dup(a, 0);
 	b->stack = ft_rank_stack(a);
 	b->size = 0;
-	ft_read(a, b);
+	ft_read_rules(a, b);
 	free(a->stack);
 	free(b->stack);
 	return (0);
 }
 
-void	ft_read(t_stack *a, t_stack *b)
+void	ft_read_rules(t_stack *a, t_stack *b)
 {
 	char	*str;
 
-	str = get_next_line(0);
-	while (str)
+	while (1)
 	{
+		str = get_next_line(0);
+		if (!str)
+			break ;
 		if (ft_check_rules(a, b, str) == -1)
 		{
 			ft_putendl_fd("Error", 2);
@@ -46,7 +48,6 @@ void	ft_read(t_stack *a, t_stack *b)
 			exit(EXIT_FAILURE);
 		}
 		free(str);
-		str = get_next_line(0);
 	}
 	if (ft_sorted(a) && !b->size)
 		ft_putendl_fd("OK", 1);

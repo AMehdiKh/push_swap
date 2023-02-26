@@ -6,7 +6,7 @@
 /*   By: ael-khel <ael-khel@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 22:55:24 by ael-khel          #+#    #+#             */
-/*   Updated: 2023/02/25 19:34:40 by ael-khel         ###   ########.fr       */
+/*   Updated: 2023/02/26 23:16:25 by ael-khel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	main(int ac, char **av)
 	t_stack	a[1];
 	t_stack	b[1];
 
-	if (ac == 1) //lahw3lm 7ta tfi9
+	if (ac == 1)
 		return (0);
 	ft_bzero(a, sizeof(t_stack));
 	ft_check_args(a, ac, av);
@@ -30,7 +30,7 @@ int	main(int ac, char **av)
 	b->stack = ft_rank_stack(a);
 	b->size = 0;
 	if (a->size <= 5)
-		ft_sort_eq_less_5(a, b);
+		ft_sort_5(a, b);
 	else if (a->size <= 100)
 		ft_range_sort(a, b, 15);
 	else if (a->size <= 500)
@@ -40,7 +40,7 @@ int	main(int ac, char **av)
 	return (0);
 }
 
-void	ft_sort_eq_less_5(t_stack *a, t_stack *b)
+void	ft_sort_5(t_stack *a, t_stack *b)
 {
 	int	i;
 
@@ -84,8 +84,6 @@ void	ft_push_to_b(t_stack *a, t_stack *b, int range)
 		else if (a->stack[0] < range + i)
 		{
 			ft_pb(a, b, 1);
-			if (b->stack[0] < b->stack[1])
-				ft_sb(b, 1);
 			++i;
 		}
 		else
@@ -107,13 +105,3 @@ void	ft_range_sort(t_stack *a, t_stack *b, int range)
 		ft_pa(a, b, 1);
 	}
 }
-
-// void	ft_sort_3(t_stack *a)
-// {
-// 	if (ft_index(a, 2) == 1)
-// 		ft_sa(a, 1);
-// 	if (ft_index(a, 2) == 0)
-// 		ft_ra(a, 1);
-// 	if (ft_index(a, 0) == 1)
-// 		ft_sa(a, 1);
-// }
