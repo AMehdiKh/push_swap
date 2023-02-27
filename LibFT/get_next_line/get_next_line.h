@@ -6,7 +6,7 @@
 /*   By: ael-khel <ael-khel@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 11:29:42 by ael-khel          #+#    #+#             */
-/*   Updated: 2023/02/25 13:55:36 by ael-khel         ###   ########.fr       */
+/*   Updated: 2023/02/27 18:42:25 by ael-khel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,6 @@ int		ft_strchr_gnl(char *s, int c);
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 4096
-
 # endif
+
 #endif

@@ -6,7 +6,7 @@
 /*   By: ael-khel <ael-khel@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 22:55:24 by ael-khel          #+#    #+#             */
-/*   Updated: 2023/02/26 23:16:25 by ael-khel         ###   ########.fr       */
+/*   Updated: 2023/02/27 18:19:21 by ael-khel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,7 @@ int	main(int ac, char **av)
 
 	if (ac == 1)
 		return (0);
-	ft_bzero(a, sizeof(t_stack));
-	ft_check_args(a, ac, av);
+	ft_check_args(ft_memset(a, 0, sizeof(t_stack)), ac, av);
 	if (a->size == 1)
 	{
 		free(a->stack);
@@ -32,7 +31,7 @@ int	main(int ac, char **av)
 	if (a->size <= 5)
 		ft_sort_5(a, b);
 	else if (a->size <= 100)
-		ft_range_sort(a, b, 15);
+		ft_range_sort(a, b, 19);
 	else if (a->size <= 500)
 		ft_range_sort(a, b, 35);
 	free(a->stack);
@@ -47,22 +46,22 @@ void	ft_sort_5(t_stack *a, t_stack *b)
 	i = 0;
 	while (a->size > 3)
 	{
-		if (ft_index(a, i) <= a->size / 2)
-			while (ft_index(a, i) != 0)
+		if (ft_position(a, i) <= a->size / 2)
+			while (ft_position(a, i) != 0)
 				ft_ra(a, 1);
 		else
-			while (ft_index(a, i) != 0)
+			while (ft_position(a, i) != 0)
 				ft_rra(a, 1);
 		ft_pb(a, b, 1);
 		++i;
 	}
-	if (ft_index(a, (a->size - 1) + b->size) == 1)
+	if (ft_position(a, (a->size - 1) + b->size) == 1)
 		ft_rra(a, 1);
-	if (ft_index(a, (a->size - 1) + b->size) == 0)
+	if (ft_position(a, (a->size - 1) + b->size) == 0)
 		ft_ra(a, 1);
-	if (ft_index(a, b->size) == 1)
+	if (ft_position(a, b->size) == 1)
 		ft_sa(a, 1);
-	if (ft_index(b, 0) == 0)
+	if (ft_position(b, 0) == 0)
 		ft_sb(b, 1);
 	while (b->size)
 		ft_pa(a, b, 1);
@@ -96,11 +95,11 @@ void	ft_range_sort(t_stack *a, t_stack *b, int range)
 	ft_push_to_b(a, b, range);
 	while (b->size)
 	{
-		if (ft_index(b, b->size - 1) <= b->size / 2)
-			while (ft_index(b, b->size - 1) != 0)
+		if (ft_position(b, b->size - 1) <= b->size / 2)
+			while (ft_position(b, b->size - 1) != 0)
 				ft_rb(b, 1);
 		else
-			while (ft_index(b, b->size - 1) != 0)
+			while (ft_position(b, b->size - 1) != 0)
 				ft_rrb(b, 1);
 		ft_pa(a, b, 1);
 	}

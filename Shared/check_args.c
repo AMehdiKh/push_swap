@@ -6,7 +6,7 @@
 /*   By: ael-khel <ael-khel@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 06:34:05 by ael-khel          #+#    #+#             */
-/*   Updated: 2023/02/25 18:16:16 by ael-khel         ###   ########.fr       */
+/*   Updated: 2023/02/27 17:23:35 by ael-khel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,9 @@ void	ft_add_back(t_stack *a, int size, int value, char **args)
 	arr = ft_calloc(size + 1, sizeof(int));
 	if (!arr)
 		ft_err(a, args, NULL);
-	arr = ft_memcpy(arr, a->stack, size * sizeof(int));
-	arr[size] = value;
+	ft_memcpy(arr, a->stack, size * sizeof(int));
 	free(a->stack);
+	arr[size] = value;
 	a->stack = arr;
 }
 
@@ -104,7 +104,7 @@ int	*ft_rank_stack(t_stack *a)
 	ptr = malloc(a->size * sizeof(int));
 	if (!ptr)
 		ft_err(a, NULL, NULL);
-	ptr = ft_memcpy(ptr, a->stack, a->size * sizeof(int));
+	ft_memcpy(ptr, a->stack, a->size * sizeof(int));
 	i = -1;
 	while (++i < a->size)
 	{
@@ -118,6 +118,5 @@ int	*ft_rank_stack(t_stack *a)
 		ptr[min] = j;
 	}
 	ft_rank(a, ptr);
-	ft_bzero(ptr, a->size * sizeof(int));
-	return (ptr);
+	return (ft_memset(ptr, 0, a->size * sizeof(int)));
 }

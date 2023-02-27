@@ -6,7 +6,7 @@
 /*   By: ael-khel <ael-khel@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 11:11:17 by ael-khel          #+#    #+#             */
-/*   Updated: 2023/02/25 06:28:43 by ael-khel         ###   ########.fr       */
+/*   Updated: 2023/02/27 17:54:42 by ael-khel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,9 +65,12 @@ void	ft_rra(t_stack *a, int rule)
 	if (a->size > 1)
 	{
 		temp = a->stack[a->size - 1];
-		i = a->size;
-		while (--i)
+		i = a->size - 1;
+		while (i)
+		{
 			a->stack[i] = a->stack[i - 1];
+			--i;
+		}
 		a->stack[0] = temp;
 		if (rule)
 			ft_putendl_fd("rra", 1);
@@ -82,9 +85,12 @@ void	ft_rrb(t_stack *b, int rule)
 	if (b->size > 1)
 	{
 		temp = b->stack[b->size - 1];
-		i = b->size;
-		while (--i)
+		i = b->size - 1;
+		while (i)
+		{
 			b->stack[i] = b->stack[i - 1];
+			--i;
+		}
 		b->stack[0] = temp;
 		if (rule)
 			ft_putendl_fd("rrb", 1);

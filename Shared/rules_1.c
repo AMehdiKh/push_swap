@@ -6,7 +6,7 @@
 /*   By: ael-khel <ael-khel@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 08:25:50 by ael-khel          #+#    #+#             */
-/*   Updated: 2023/02/27 00:11:49 by ael-khel         ###   ########.fr       */
+/*   Updated: 2023/02/27 17:43:40 by ael-khel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,12 +62,15 @@ void	ft_pa(t_stack *a, t_stack *b, int rule)
 		i = 0;
 		while (++i < b->size)
 			b->stack[i - 1] = b->stack[i];
-		--b->size;
-		i = a->size + 1 + (a->size == 0);
-		while (--i)
+		b->size -= 1;
+		i = a->size;
+		while (i)
+		{
 			a->stack[i] = a->stack[i - 1];
+			--i;
+		}
 		a->stack[0] = temp;
-		++a->size;
+		a->size += 1;
 		if (rule)
 			ft_putendl_fd("pa", 1);
 	}
@@ -84,12 +87,15 @@ void	ft_pb(t_stack *a, t_stack *b, int rule)
 		i = 0;
 		while (++i < a->size)
 			a->stack[i - 1] = a->stack[i];
-		--a->size;
-		i = b->size + 1 + (b->size == 0);
-		while (--i)
+		a->size -= 1;
+		i = b->size;
+		while (i)
+		{
 			b->stack[i] = b->stack[i - 1];
+			--i;
+		}
 		b->stack[0] = temp;
-		++b->size;
+		b->size += 1;
 		if (rule)
 			ft_putendl_fd("pb", 1);
 	}

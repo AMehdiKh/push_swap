@@ -6,7 +6,7 @@
 /*   By: ael-khel <ael-khel@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 07:50:44 by ael-khel          #+#    #+#             */
-/*   Updated: 2023/02/25 18:13:49 by ael-khel         ###   ########.fr       */
+/*   Updated: 2023/02/27 16:35:58 by ael-khel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	ft_rank(t_stack *a, int *ptr)
 	}
 }
 
-int	ft_index(t_stack *ptr, int rank)
+int	ft_position(t_stack *ptr, int rank)
 {
 	int	i;
 
