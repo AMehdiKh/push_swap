@@ -6,7 +6,7 @@
 /*   By: ael-khel <ael-khel@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 22:55:24 by ael-khel          #+#    #+#             */
-/*   Updated: 2023/02/27 18:19:21 by ael-khel         ###   ########.fr       */
+/*   Updated: 2023/02/28 02:37:11 by ael-khel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ int	main(int ac, char **av)
 	ft_check_dup(a, 1);
 	b->stack = ft_rank_stack(a);
 	b->size = 0;
-	if (a->size <= 5)
-		ft_sort_5(a, b);
+	if (a->size <= 15)
+		ft_sort_small(a, b);
 	else if (a->size <= 100)
 		ft_range_sort(a, b, 19);
 	else if (a->size <= 500)
@@ -39,7 +39,7 @@ int	main(int ac, char **av)
 	return (0);
 }
 
-void	ft_sort_5(t_stack *a, t_stack *b)
+void	ft_sort_small(t_stack *a, t_stack *b)
 {
 	int	i;
 
@@ -61,8 +61,6 @@ void	ft_sort_5(t_stack *a, t_stack *b)
 		ft_ra(a, 1);
 	if (ft_position(a, b->size) == 1)
 		ft_sa(a, 1);
-	if (ft_position(b, 0) == 0)
-		ft_sb(b, 1);
 	while (b->size)
 		ft_pa(a, b, 1);
 }
@@ -80,7 +78,7 @@ void	ft_push_to_b(t_stack *a, t_stack *b, int range)
 			ft_rb(b, 1);
 			++i;
 		}
-		else if (a->stack[0] < range + i)
+		else if (a->stack[0] < (range + i))
 		{
 			ft_pb(a, b, 1);
 			++i;

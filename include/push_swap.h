@@ -6,7 +6,7 @@
 /*   By: ael-khel <ael-khel@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 22:56:01 by ael-khel          #+#    #+#             */
-/*   Updated: 2023/02/27 16:35:58 by ael-khel         ###   ########.fr       */
+/*   Updated: 2023/02/28 02:37:11 by ael-khel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <stdlib.h>
 # include <fcntl.h>
 # include <limits.h>
-# include "../LibFT/libft.h"
+# include "./LibFT/libft.h"
 
 typedef struct s_stack
 {
@@ -48,7 +48,7 @@ void	ft_rrr(t_stack *a, t_stack *b, int rule);
 void	ft_err(t_stack *a, char **args, char *str);
 void	ft_clear(char **ptr);
 
-void	ft_sort_5(t_stack *a, t_stack *b);
+void	ft_sort_small(t_stack *a, t_stack *b);
 void	ft_range_sort(t_stack *a, t_stack *b, int range);
 void	ft_push_to_b(t_stack *a, t_stack *b, int range);
 int		ft_position(t_stack *ptr, int rank);
