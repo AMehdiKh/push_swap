@@ -6,15 +6,13 @@
 /*   By: ael-khel <ael-khel@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 07:54:13 by Ael-khel          #+#    #+#             */
-/*   Updated: 2023/02/27 18:40:22 by ael-khel         ###   ########.fr       */
+/*   Updated: 2023/02/28 16:06:38 by ael-khel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
-# include <unistd.h>
-# include <stdlib.h>
 # include "./get_next_line/get_next_line.h"
 
 size_t		ft_strlcpy(char *dst, const char *src, size_t size);

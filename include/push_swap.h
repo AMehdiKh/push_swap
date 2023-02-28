@@ -6,16 +6,13 @@
 /*   By: ael-khel <ael-khel@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 22:56:01 by ael-khel          #+#    #+#             */
-/*   Updated: 2023/02/28 02:37:11 by ael-khel         ###   ########.fr       */
+/*   Updated: 2023/02/28 16:06:50 by ael-khel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include <stdio.h>
-# include <unistd.h>
-# include <stdlib.h>
 # include <fcntl.h>
 # include <limits.h>
 # include "./LibFT/libft.h"
