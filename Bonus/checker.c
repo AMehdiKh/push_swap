@@ -6,7 +6,7 @@
 /*   By: ael-khel <ael-khel@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 17:34:39 by ael-khel          #+#    #+#             */
-/*   Updated: 2023/02/28 16:05:29 by ael-khel         ###   ########.fr       */
+/*   Updated: 2023/03/01 16:46:46 by ael-khel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	main(int ac, char **av)
 
 	if (ac == 1)
 		return (0);
-	ft_check_args(ft_memset(a, 0, sizeof(t_stack)), ac, av);
+	ft_check_args(ft_memset(a, 0, sizeof(t_stack)), av);
 	ft_check_dup(a, 0);
 	b->stack = ft_rank_stack(a);
 	b->size = 0;

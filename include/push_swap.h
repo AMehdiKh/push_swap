@@ -6,7 +6,7 @@
 /*   By: ael-khel <ael-khel@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 22:56:01 by ael-khel          #+#    #+#             */
-/*   Updated: 2023/02/28 16:06:50 by ael-khel         ###   ########.fr       */
+/*   Updated: 2023/03/01 15:39:43 by ael-khel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ typedef struct s_stack
 	int		size;
 }	t_stack;
 
-void	ft_check_args(t_stack *a, int ac, char **av);
+void	ft_check_args(t_stack *a, char **av);
 long	ft_atol(t_stack *a, char **args, const char *s);
 void	ft_add_back(t_stack *a, int size, int value, char **args);
 void	ft_check_dup(t_stack *a, int man);

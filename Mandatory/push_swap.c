@@ -6,7 +6,7 @@
 /*   By: ael-khel <ael-khel@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 22:55:24 by ael-khel          #+#    #+#             */
-/*   Updated: 2023/02/28 02:37:11 by ael-khel         ###   ########.fr       */
+/*   Updated: 2023/03/01 16:11:31 by ael-khel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	main(int ac, char **av)
 
 	if (ac == 1)
 		return (0);
-	ft_check_args(ft_memset(a, 0, sizeof(t_stack)), ac, av);
+	ft_check_args(ft_memset(a, 0, sizeof(t_stack)), av);
 	if (a->size == 1)
 	{
 		free(a->stack);

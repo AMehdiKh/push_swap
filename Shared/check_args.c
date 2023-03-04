@@ -6,24 +6,24 @@
 /*   By: ael-khel <ael-khel@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 06:34:05 by ael-khel          #+#    #+#             */
-/*   Updated: 2023/02/27 17:23:35 by ael-khel         ###   ########.fr       */
+/*   Updated: 2023/03/01 15:53:46 by ael-khel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-void	ft_check_args(t_stack *a, int ac, char **av)
+void	ft_check_args(t_stack *a, char **av)
 {
 	char	**args;
 	int		i;
 	int		j;
 
 	i = 0;
-	while (++i < ac)
+	while (av[++i])
 	{
 		args = ft_split(av[i], ' ');
 		if (!args)
-			ft_err(a, args, NULL);
+			ft_err(a, NULL, NULL);
 		if (!*args)
 			ft_err(a, args, "Error");
 		j = -1;
@@ -57,13 +57,15 @@ long	ft_atol(t_stack *a, char **args, const char *s)
 	if ((*s == '+' || *s == '-') && ft_strlen(s) != 1)
 		if (*s++ == '-')
 			sign = -sign;
-	if (ft_isdigit(*s))
-		while (ft_isdigit(*s))
-			result = (result * 10) + (*s++ - 48);
-	result *= sign;
-	if (*s || result > INT_MAX || result < INT_MIN)
+	while (ft_isdigit(*s))
+	{
+		result = (result * 10) + (*s++ - 48);
+		if (result * sign > INT_MAX || result * sign < INT_MIN)
+			ft_err(a, args, "Error");
+	}
+	if (*s)
 		ft_err(a, args, "Error");
-	return (result);
+	return (result * sign);
 }
 
 void	ft_check_dup(t_stack *a, int man)
